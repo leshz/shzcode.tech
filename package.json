@@ -11,7 +11,11 @@
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.6"
+    "next": "14.2.6",
+    "fslightbox-react": "^1.7.6",
+    "isotope-layout": "^3.0.6",
+    "react-player": "^2.13.0",
+    "typed.js": "^2.0.16"
   },
   "devDependencies": {
     "eslint-config-airbnb": "19.0.4",

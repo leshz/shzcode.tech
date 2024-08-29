@@ -1,12 +1,35 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import About from "@/components/About";
+import ContactsInfo from "@/components/ContactsInfo";
+import Hero from "@/components/Hero";
+import Resume from "@/components/Resume";
+import Services from "@/components/Services";
+import Skills from "@/components/Skills";
+import GlitcheLayout from "@/layouts/GlitcheLayout";
 
-export default function Home() {
+import dynamic from "next/dynamic";
+const Clients = dynamic(() => import("@/components/Clients"), {
+  ssr: false,
+});
+const RecentWorks = dynamic(() => import("@/components/RecentWorks"), {
+  ssr: false,
+});
+const Blog = dynamic(() => import("@/components/Blog"), {
+  ssr: false,
+});
+
+const Page = () => {
   return (
-    <main className={styles.main}>
-      <h1>SHZTECH.DEV</h1>
-      <h2>Under constuction 🚧</h2>
-      <h3>⚠️⚠️WIP⚠️⚠️</h3>
-    </main>
-  )
-}
+    <GlitcheLayout onepage={true}>
+      <Hero mouse={true} />
+      <About />
+      <Resume />
+      <Skills />
+      <Services />
+      <Clients />
+      <RecentWorks />
+      <Blog />
+      <ContactsInfo />
+    </GlitcheLayout>
+  );
+};
+export default Page;
