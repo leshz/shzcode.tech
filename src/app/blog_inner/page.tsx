@@ -1,9 +1,9 @@
-import GlitcheLayout from "@/layouts/GlitcheLayout";
-import Link from "next/link";
+import { GlitcheLayout } from '@/layouts/GlitcheLayout'
+import Link from 'next/link'
 const BlogInner = () => {
   return (
     <GlitcheLayout>
-      <div className="section started" style={{ height: "96vh" }}>
+      <div className="section started" style={{ height: '96vh' }}>
         <div className="centrize full-width">
           <div className="vertical-center">
             <div className="started-content">
@@ -128,13 +128,12 @@ const BlogInner = () => {
                   <textarea
                     name="message"
                     placeholder="Comment"
-                    defaultValue={""}
+                    defaultValue={''}
                   />
                 </div>
                 <a
                   href="#"
                   className="btn fill"
-                  onclick="$('#comment_form').submit(); return false;"
                   data-text="Add Comment"
                 >
                   Add Comment
@@ -146,6 +145,6 @@ const BlogInner = () => {
         </div>
       </div>
     </GlitcheLayout>
-  );
-};
-export default BlogInner;
+  )
+}
+export default BlogInner

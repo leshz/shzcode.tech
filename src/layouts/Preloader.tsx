@@ -36,12 +36,7 @@ const Preloader = () => {
     }
   }, []);
 
-  const [text, setText] = useState("loading ...");
-  useEffect(() => {
-    window.location.pathname.includes("rtl")
-      ? setText("جار التحميل...")
-      : "loading ...";
-  }, []);
+  const [text] = useState("loading ...");
 
   return (
     <div className="preloader">
