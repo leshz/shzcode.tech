@@ -1,7 +1,10 @@
-import { GlitcheLayout } from '@/layouts/GlitcheLayout'
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link'
-const BlogInner = () => {
-  return (
+import { GlitcheLayout } from '@/layouts/GlitcheLayout'
+
+
+const BlogInner = () => (
     <GlitcheLayout>
       <div className="section started" style={{ height: '96vh' }}>
         <div className="centrize full-width">
@@ -128,7 +131,7 @@ const BlogInner = () => {
                   <textarea
                     name="message"
                     placeholder="Comment"
-                    defaultValue={''}
+                    defaultValue=""
                   />
                 </div>
                 <a
@@ -146,5 +149,4 @@ const BlogInner = () => {
       </div>
     </GlitcheLayout>
   )
-}
 export default BlogInner

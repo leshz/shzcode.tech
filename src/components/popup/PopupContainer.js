@@ -1,16 +1,17 @@
 "use client";
+
 import { context } from "@/context/context";
 import useClickOutside from "@/utility/useClickOutside";
 import { Fragment, useContext } from "react";
 
 const PopContainer = ({ children, nullValue }) => {
   const { modalToggle, modal } = useContext(context);
-  let domNode = useClickOutside(() => {
+  const domNode = useClickOutside(() => {
     modalToggle(false);
     nullValue(null);
   });
   return (
-    <Fragment>
+    <>
       <div
         className="mfp-bg mfp-fade mfp-ready"
         onClick={(e) => {
@@ -18,7 +19,7 @@ const PopContainer = ({ children, nullValue }) => {
           modalToggle(false);
           nullValue(null);
         }}
-      ></div>
+       />
       <div
         className="mfp-wrap mfp-close-btn-in mfp-auto-cursor mfp-fade mfp-ready"
         tabIndex={-1}
@@ -45,7 +46,7 @@ const PopContainer = ({ children, nullValue }) => {
           <div className="mfp-preloader">Loading...</div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 export default PopContainer;

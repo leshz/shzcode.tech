@@ -1,5 +1,4 @@
-const ContactsInfo = () => {
-  return (
+const ContactsInfo = () => (
     <div className="section contacts section_" id="section-contacts">
       <div className="content">
         <div className="title">
@@ -44,7 +43,7 @@ const ContactsInfo = () => {
               <textarea
                 name="message"
                 placeholder="Message"
-                defaultValue={""}
+                defaultValue=""
               />
             </div>
             <a href="#" className="btn fill" data-text="Send Message">
@@ -61,5 +60,4 @@ const ContactsInfo = () => {
       </div>
     </div>
   );
-};
 export default ContactsInfo;

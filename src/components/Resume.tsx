@@ -1,5 +1,4 @@
-const Resume = () => {
-  return (
+const Resume = () => (
     <div className="section resume">
       <div className="content">
         <div className="cols">
@@ -66,5 +65,4 @@ const Resume = () => {
       </div>
     </div>
   );
-};
 export default Resume;

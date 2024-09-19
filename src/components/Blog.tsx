@@ -1,36 +1,27 @@
 'use client'
+
 import Isotope from 'isotope-layout'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+
 const Blog = () => {
   // Isotope
-  const isotope = useRef()
-  const [filterKey, setFilterKey] = useState('*')
+  const isotope = useRef<Isotope>(null)
+  const [filterKey] = useState('*')
   useEffect(() => {
     setTimeout(() => {
-      isotope.current = new Isotope('.blog-items', {
+      let { current } = isotope
+      current = new Isotope('.blog-items', {
         itemSelector: '.box-item',
-        // layoutMode: "fitRows",
+        layoutMode: 'fitRows',
         percentPosition: true,
         masonry: {
           columnWidth: '.box-item'
-        },
-        animationOptions: {
-          duration: 750,
-          easing: 'linear',
-          queue: false
         }
       })
     }, 1000)
-    // return () => isotope.current.destroy();
+    return () => isotope?.current?.destroy()
   }, [])
-  useEffect(() => {
-    if (isotope.current) {
-      filterKey === '*'
-        ? isotope.current.arrange({ filter: `*` })
-        : isotope.current.arrange({ filter: `.${filterKey}` })
-    }
-  }, [filterKey])
 
   const blogs = [
     {
@@ -99,7 +90,7 @@ const Blog = () => {
           {blogs.map(blog => (
             <div className="box-item" key={blog.id}>
               <div className="image">
-                <Link href={`blog_inner`}>
+                <Link href="blog_inner">
                   <img src={blog.img} />
                   <span className="info">
                     <span className="centrize full-width">
@@ -112,7 +103,7 @@ const Blog = () => {
               </div>
               <div className="desc">
                 <div className="date">{blog.date}</div>
-                <Link href={`blog_inner`} className="name">
+                <Link href="blog_inner" className="name">
                   {blog.title}
                 </Link>
               </div>

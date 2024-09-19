@@ -1,80 +1,64 @@
-"use client";
-import { context } from "@/context/context";
-import FsLightbox from "fslightbox-react";
-import Isotope from "isotope-layout";
+
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/anchor-has-content */
+
+'use client'
+
+import { context } from '@/context/context'
+import FsLightbox from 'fslightbox-react'
+import Isotope from 'isotope-layout'
 import {
   Fragment,
   useCallback,
   useContext,
   useEffect,
   useRef,
-  useState,
-} from "react";
+  useState
+} from 'react'
 
 const galleryImages = {
   1: [
-    "images/works/work1.jpg",
-    "images/works/work2.jpg",
-    "images/works/work3.jpg",
-    "images/works/work4.jpg",
+    'images/works/work1.jpg',
+    'images/works/work2.jpg',
+    'images/works/work3.jpg',
+    'images/works/work4.jpg'
   ],
   2: [
-    "images/works/work5.jpg",
-    "images/works/work2.jpg",
-    "images/works/work3.jpg",
-    "images/works/work4.jpg",
-  ],
-};
+    'images/works/work5.jpg',
+    'images/works/work2.jpg',
+    'images/works/work3.jpg',
+    'images/works/work4.jpg'
+  ]
+}
 
 const RecentWorks = () => {
-  // Isotope
-  const isotope = useRef();
-  const [filterKey, setFilterKey] = useState("*");
+  const isotope = useRef<Isotope>(null)
   useEffect(() => {
     setTimeout(() => {
-      isotope.current = new Isotope(".portfolio-items", {
-        itemSelector: ".box-item",
-        // layoutMode: "fitRows",
+      let { current } = isotope
+      current = new Isotope('.portfolio-items', {
+        itemSelector: '.box-item',
         percentPosition: true,
         masonry: {
-          columnWidth: ".box-item",
-        },
-        animationOptions: {
-          duration: 750,
-          easing: "linear",
-          queue: false,
-        },
-      });
-    }, 1000);
-    // return () => isotope.current.destroy();
-  }, []);
-  useEffect(() => {
-    if (isotope.current) {
-      filterKey === "*"
-        ? isotope.current.arrange({ filter: `*` })
-        : isotope.current.arrange({ filter: `.${filterKey}` });
-    }
-  }, [filterKey]);
-  const handleFilterKeyChange = useCallback(
-    (key) => () => {
-      setFilterKey(key);
-    },
-    []
-  );
+          columnWidth: '.box-item'
+        }
+      })
+    }, 1000)
+    return () => isotope?.current?.destroy()
+  }, [])
 
-  const activeBtn = (value) => (value === filterKey ? "glitch-effect" : "");
+  const [activeGallaryImage, setActiveGallaryImage] = useState(1)
+  const [gallery, setGallery] = useState(false)
 
-  const [activeGallaryImage, setActiveGallaryImage] = useState(1);
-  const [gallery, setGallery] = useState(false);
-
-  const { modalToggle, setPortfolioModal } = useContext(context);
+  const { modalToggle, setPortfolioModal } = useContext(context)
 
   return (
-    <Fragment>
-      <FsLightbox
+    <>
+      {/* <FsLightbox
         toggler={gallery}
-        sources={galleryImages[activeGallaryImage]}
-      />
+        sources={galleryImages[activeGallaryImage] as string[]}
+      /> */}
       <div className="section works section_" id="section-works">
         <div className="content">
           <div className="title">
@@ -83,11 +67,7 @@ const RecentWorks = () => {
           <div className="filter-menu">
             <div className="filters">
               <div className="btn-group">
-                <label
-                  data-text="All"
-                  className={`c-pointer ${activeBtn("*")}`}
-                  onClick={handleFilterKeyChange("*")}
-                >
+                <label data-text="All" className="c-pointer">
                   <input
                     type="radio"
                     name="fl_radio"
@@ -97,51 +77,31 @@ const RecentWorks = () => {
                 </label>
               </div>
               <div className="btn-group">
-                <label
-                  data-text="Video"
-                  className={`c-pointer ${activeBtn("f-video")}`}
-                  onClick={handleFilterKeyChange("f-video")}
-                >
+                <label data-text="Video" className="c-pointer">
                   <input type="radio" name="fl_radio" defaultValue=".f-video" />
                   Video
                 </label>
               </div>
               <div className="btn-group">
-                <label
-                  data-text="Music"
-                  className={`c-pointer ${activeBtn("f-music")}`}
-                  onClick={handleFilterKeyChange("f-music")}
-                >
+                <label data-text="Music" className="c-pointer">
                   <input type="radio" name="fl_radio" defaultValue=".f-music" />
                   Music
                 </label>
               </div>
               <div className="btn-group">
-                <label
-                  data-text="Links"
-                  className={`c-pointer ${activeBtn("f-links")}`}
-                  onClick={handleFilterKeyChange("f-links")}
-                >
+                <label data-text="Links" className="c-pointer">
                   <input type="radio" name="fl_radio" defaultValue=".f-links" />
                   Links
                 </label>
               </div>
               <div className="btn-group">
-                <label
-                  data-text="Image"
-                  className={`c-pointer ${activeBtn("f-image")}`}
-                  onClick={handleFilterKeyChange("f-image")}
-                >
+                <label data-text="Image" className="c-pointer">
                   <input type="radio" name="fl_radio" defaultValue=".f-image" />
                   Image
                 </label>
               </div>
               <div className="btn-group">
-                <label
-                  data-text="Gallery"
-                  className={`c-pointer ${activeBtn("f-gallery")}`}
-                  onClick={handleFilterKeyChange("f-gallery")}
-                >
+                <label data-text="Gallery" className={`c-pointer `}>
                   <input
                     type="radio"
                     name="fl_radio"
@@ -151,11 +111,7 @@ const RecentWorks = () => {
                 </label>
               </div>
               <div className="btn-group">
-                <label
-                  data-text="Content"
-                  className={`c-pointer ${activeBtn("f-content")}`}
-                  onClick={handleFilterKeyChange("f-content")}
-                >
+                <label data-text="Content" className={`c-pointer `}>
                   <input
                     type="radio"
                     name="fl_radio"
@@ -172,12 +128,12 @@ const RecentWorks = () => {
                 <a
                   href="#gallery-1"
                   onClick={() => {
-                    setGallery(!gallery);
-                    setActiveGallaryImage(1);
+                    setGallery(!gallery)
+                    setActiveGallaryImage(1)
                   }}
                   className="has-popup-gallery"
                 >
-                  <img src="images/works/work1.jpg" alt />
+                  <img src="images/works/work1.jpg" />
                   <span className="info">
                     <span className="centrize full-width">
                       <span className="vertical-center">
@@ -206,7 +162,7 @@ const RecentWorks = () => {
                   href="https://youtu.be/S4L8T2kFFck"
                   className="has-popup-video"
                 >
-                  <img src="images/works/work2.jpg" alt />
+                  <img src="images/works/work2.jpg" />
                   <span className="info">
                     <span className="centrize full-width">
                       <span className="vertical-center">
@@ -233,7 +189,7 @@ const RecentWorks = () => {
                   className="has-popup-link"
                   target="_blank"
                 >
-                  <img src="images/works/work8.jpg" alt />
+                  <img src="images/works/work8.jpg" />
                   <span className="info">
                     <span className="centrize full-width">
                       <span className="vertical-center">
@@ -253,7 +209,7 @@ const RecentWorks = () => {
             <div className="box-item f-image">
               <div className="image">
                 <a href="images/works/work4.jpg" className="has-popup-image">
-                  <img src="images/works/work4.jpg" alt />
+                  <img src="images/works/work4.jpg" />
                   <span className="info">
                     <span className="centrize full-width">
                       <span className="vertical-center">
@@ -279,11 +235,11 @@ const RecentWorks = () => {
                   href="#gallery-2"
                   className="has-popup-gallery"
                   onClick={() => {
-                    setGallery(!gallery);
-                    setActiveGallaryImage(2);
+                    setGallery(!gallery)
+                    setActiveGallaryImage(2)
                   }}
                 >
-                  <img src="images/works/work5.jpg" alt />
+                  <img src="images/works/work5.jpg" />
                   <span className="info">
                     <span className="centrize full-width">
                       <span className="vertical-center">
@@ -312,7 +268,7 @@ const RecentWorks = () => {
                   href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/471954807&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
                   className="has-popup-music"
                 >
-                  <img src="images/works/work6.jpg" alt />
+                  <img src="images/works/work6.jpg" />
                   <span className="info">
                     <span className="centrize full-width">
                       <span className="vertical-center">
@@ -335,7 +291,7 @@ const RecentWorks = () => {
             <div className="box-item f-image">
               <div className="image">
                 <a href="images/works/work7.jpg" className="has-popup-image">
-                  <img src="images/works/work7.jpg" alt />
+                  <img src="images/works/work7.jpg" />
                   <span className="info">
                     <span className="centrize full-width">
                       <span className="vertical-center">
@@ -360,13 +316,13 @@ const RecentWorks = () => {
                 <a
                   href="#popup-1"
                   className="has-popup-media"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    modalToggle(true);
-                    setPortfolioModal(true);
+                  onClick={e => {
+                    e.preventDefault()
+                    modalToggle(true)
+                    setPortfolioModal(true)
                   }}
                 >
-                  <img src="images/works/work3.jpg" alt />
+                  <img src="images/works/work3.jpg" />
                   <span className="info">
                     <span className="centrize full-width">
                       <span className="vertical-center">
@@ -381,10 +337,10 @@ const RecentWorks = () => {
                 <a
                   href="#popup-1"
                   className="name has-popup-media"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    modalToggle(true);
-                    setPortfolioModal(true);
+                  onClick={e => {
+                    e.preventDefault()
+                    modalToggle(true)
+                    setPortfolioModal(true)
                   }}
                 >
                   Cardboard Box
@@ -396,13 +352,13 @@ const RecentWorks = () => {
                 <a
                   href="#popup-2"
                   className="has-popup-media"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    modalToggle(true);
-                    setPortfolioModal(true);
+                  onClick={e => {
+                    e.preventDefault()
+                    modalToggle(true)
+                    setPortfolioModal(true)
                   }}
                 >
-                  <img src="images/works/work3.jpg" alt />
+                  <img src="images/works/work3.jpg" />
                   <span className="info">
                     <span className="centrize full-width">
                       <span className="vertical-center">
@@ -417,10 +373,10 @@ const RecentWorks = () => {
                 <a
                   href="#popup-2"
                   className="name has-popup-media"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    modalToggle(true);
-                    setPortfolioModal(true);
+                  onClick={e => {
+                    e.preventDefault()
+                    modalToggle(true)
+                    setPortfolioModal(true)
                   }}
                 >
                   Cardboard Box
@@ -431,7 +387,7 @@ const RecentWorks = () => {
           <div className="clear" />
         </div>
       </div>
-    </Fragment>
-  );
-};
-export default RecentWorks;
+    </>
+  )
+}
+export default RecentWorks

@@ -1,12 +1,12 @@
 import { context } from "@/context/context";
 import FsLightbox from "fslightbox-react";
 import { Fragment, useContext } from "react";
+
 const ImageGallery = () => {
   const { gallery, setGallery } = useContext(context);
 
   return (
-    <Fragment>
-      <FsLightbox
+    <FsLightbox
         toggler={gallery}
         sources={[
           "images/works/work1.jpg",
@@ -15,7 +15,6 @@ const ImageGallery = () => {
           "images/works/work4.jpg",
         ]}
       />
-    </Fragment>
   );
 };
 export default ImageGallery;

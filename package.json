@@ -1,5 +1,10 @@
 {
   "name": "shzcode.tech",
+  "description": "a personal porfolio from jeff barragan publisehd on https://shztech.dev/",
+  "main": "index.js",
+  "repository": "https://github.com/leshz/shzcode.tech.git",
+  "author": "Jeff Barragan <leshz@me.com>",
+  "license": "MIT",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,6 +12,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "engines": {
+    "node": "20.x.x"
   },
   "dependencies": {
     "fslightbox-react": "^1.7.6",
@@ -18,9 +26,12 @@
     "typed.js": "^2.0.16"
   },
   "devDependencies": {
+    "@types/fslightbox-react": "^1.7.7",
+    "@types/isotope-layout": "^3.0.14",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^8.6.0",
     "eslint": "^8",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-next": "14.2.6",

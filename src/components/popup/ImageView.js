@@ -2,19 +2,19 @@ import useClickOutside from "@/utility/useClickOutside";
 import { Fragment, useEffect, useState } from "react";
 
 const ImgViews = ({ close, src }) => {
-  let domNode = useClickOutside(() => {
+  const domNode = useClickOutside(() => {
     close(false);
   });
   return (
-    <Fragment>
-      <div className="mfp-bg mfp-ready" onClick={() => close(false)}></div>
+    <>
+      <div className="mfp-bg mfp-ready" onClick={() => close(false)} />
       <div
         className="mfp-wrap mfp-close-btn-in mfp-auto-cursor mfp-ready"
         tabIndex={-1}
         style={{ overflow: "hidden auto" }}
       >
         <div
-          className={`mfp-container mfp-s-ready mfp-iframe-holder mfp-img-container`}
+          className="mfp-container mfp-s-ready mfp-iframe-holder mfp-img-container"
         >
           <div className="mfp-content" ref={domNode}>
             <div className="mfp-iframe-scaler">
@@ -24,7 +24,7 @@ const ImgViews = ({ close, src }) => {
           <div className="mfp-preloader">Loading...</div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 
@@ -49,9 +49,9 @@ const ImageView = () => {
     }, 1500);
   }, []);
   return (
-    <Fragment>
+    <>
       {img && <ImgViews close={() => setImg(false)} src={imgValue} />}
-    </Fragment>
+    </>
   );
 };
 export default ImageView;

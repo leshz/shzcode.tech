@@ -1,5 +1,4 @@
-const Services = () => {
-  return (
+const Services = () => (
     <div className="section service">
       <div className="content">
         <div className="title">
@@ -52,5 +51,4 @@ const Services = () => {
       </div>
     </div>
   );
-};
 export default Services;

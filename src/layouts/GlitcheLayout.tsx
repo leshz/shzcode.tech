@@ -6,8 +6,7 @@ interface Props {
   children: React.ReactNode
 }
 
-const GlitcheLayout = ({ children }: Props) => {
-  return (
+const GlitcheLayout = ({ children }: Props) => (
     <>
       <Popup />
       <div className="container" style={{ margin: 0 }}>
@@ -21,5 +20,4 @@ const GlitcheLayout = ({ children }: Props) => {
       </div>
     </>
   )
-}
 export { GlitcheLayout }

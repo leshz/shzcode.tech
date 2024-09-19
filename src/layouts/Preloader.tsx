@@ -1,42 +1,54 @@
-"use client";
-import { useEffect, useState } from "react";
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-use-before-define */
+
+'use client'
+
+import { useEffect, useState } from 'react'
 
 const Preloader = () => {
   useEffect(() => {
-    var preInner = document.querySelector(".preloader .pre-inner");
+    const preInner = document.querySelector('.preloader .pre-inner')
 
     // Fade out .pre-inner element
-    fadeOut(preInner, 800, function () {
+    fadeOut(preInner, 800, () => {
       // Preload hide
-      var preloader = document.querySelector(".preloader");
-      preloader.style.display = "none";
+      const preloader =
+        document.querySelector('.preloader') ||
+        ({
+          style: { display: 'none' }
+        } as Element)
+      preloader.style.display = 'none'
 
       // Add 'loaded' class to body
-      document.body.classList.add("loaded");
-    });
+      document.body.classList.add('loaded')
+    })
 
-    function fadeOut(element, duration, callback) {
-      var opacity = 1;
-      var interval = 1000 / 60; // 60 frames per second
-      var step = opacity / (duration / interval);
+    function fadeOut(
+      element: HTMLElement,
+      duration: number,
+      callback: { (): void; (): void }
+    ) {
+      let opacity = 1
+      const interval = 1000 / 60 // 60 frames per second
+      const step = opacity / (duration / interval)
 
       function updateOpacity() {
-        opacity -= step;
-        element.style.opacity = opacity;
+        opacity -= step
+        element.style.opacity = opacity
 
         if (opacity <= 0) {
-          clearInterval(fadeInterval);
-          if (typeof callback === "function") {
-            callback();
+          clearInterval(fadeInterval)
+          if (typeof callback === 'function') {
+            callback()
           }
         }
       }
 
-      var fadeInterval = setInterval(updateOpacity, interval);
+      var fadeInterval = setInterval(updateOpacity, interval)
     }
-  }, []);
+  }, [])
 
-  const [text] = useState("loading ...");
+  const [text] = useState('loading ...')
 
   return (
     <div className="preloader">
@@ -51,6 +63,6 @@ const Preloader = () => {
         </div>
       </div>
     </div>
-  );
-};
-export default Preloader;
+  )
+}
+export default Preloader

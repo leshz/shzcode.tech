@@ -1,4 +1,5 @@
 "use client";
+
 import useClickOutside from "@/utility/useClickOutside";
 import { Fragment, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
@@ -9,8 +10,8 @@ const EmbedPopup_ = ({ close, videoID }) => {
   });
 
   return (
-    <Fragment>
-      <div className="mfp-bg mfp-ready" onClick={() => close(false)}></div>
+    <>
+      <div className="mfp-bg mfp-ready" onClick={() => close(false)} />
       <div
         className="mfp-wrap mfp-close-btn-in mfp-auto-cursor mfp-ready"
         tabIndex={-1}
@@ -27,13 +28,13 @@ const EmbedPopup_ = ({ close, videoID }) => {
               >
                 ×
               </button>
-              <ReactPlayer url={videoID} playing={true} />
+              <ReactPlayer url={videoID} playing />
             </div>
           </div>
           <div className="mfp-preloader">Loading...</div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

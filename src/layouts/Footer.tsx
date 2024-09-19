@@ -1,5 +1,5 @@
-const Footer = () => {
-  return (
+/* eslint-disable jsx-a11y/control-has-associated-label */
+const Footer = () => (
     <footer>
       <div className="soc">
         <a target="_blank" href="https://dribbble.com/">
@@ -21,5 +21,4 @@ const Footer = () => {
       <div className="clr" />
     </footer>
   );
-};
 export default Footer;

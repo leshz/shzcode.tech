@@ -1,5 +1,7 @@
 "use client";
 
+import { createContext, useCallback, useReducer } from "react";
+
 const type = {
   MODAL: "MODAL",
   PORTFOLIOMODAL: "PORTFOLIOMODAL",
@@ -8,9 +10,7 @@ const type = {
 };
 const { MODAL, PORTFOLIOMODAL, BLOGMODAL, GALLERY } = type;
 
-import { createContext, useCallback, useReducer } from "react";
-
-const context = createContext();
+const context = createContext({});
 
 const reducer = (state, action) => {
   const { type, payload } = action;
