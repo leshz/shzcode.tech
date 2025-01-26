@@ -1,5 +1,6 @@
 import Popup from '@/components/popup/Popup'
 import Footer from '@/layouts/Footer'
+import React from 'react'
 import OnePageHeader from './OnePageHeader'
 
 interface Props {
